@@ -1,0 +1,109 @@
+<style>
+html, body { margin: 0; padding: 0; }
+body {
+    display: flex;
+    /* single column */
+    flex-direction: column;
+    /* wraped rows */
+    --tile-size: 60px;
+    flex-wrap: wrap;
+    background-image: url(img/background2.png);
+    background-size: var(--tile-size);
+}
+.puzzle {
+    margin: var(--tile-size);
+}
+.question {
+    display: inline-grid;
+    grid-template-columns: repeat(calc(var(--puzzle-size) + 2), var(--tile-size));
+    background-image: url(img/background.png);
+    background-size: var(--tile-size);
+}
+
+.question > div {
+    display: block;
+    width: var(--tile-size);
+    height: var(--tile-size);
+    background-size: var(--tile-size);
+}
+
+.question > div[data-value="o"] { background-image: url(img/yellow.png); }
+.question > div[data-value="#"] { background-image: url(img/ice.png); }
+.question > div[data-value="."] { background-image: url(img/blue.png); }
+
+body[data-frame="0"] .question > div[data-value="?"] { background-image: url(anim/0.png); }
+body[data-frame="1"] .question > div[data-value="?"] { background-image: url(anim/1.png); }
+body[data-frame="2"] .question > div[data-value="?"] { background-image: url(anim/2.png); }
+body[data-frame="3"] .question > div[data-value="?"] { background-image: url(anim/3.png); }
+body[data-frame="4"] .question > div[data-value="?"] { background-image: url(anim/4.png); }
+body[data-frame="5"] .question > div[data-value="?"] { background-image: url(anim/5.png); }
+body[data-frame="6"] .question > div[data-value="?"] { background-image: url(anim/6.png); }
+body[data-frame="7"] .question > div[data-value="?"] { background-image: url(anim/7.png); }
+body[data-frame="8"] .question > div[data-value="?"] { background-image: url(anim/8.png); }
+body[data-frame="9"] .question > div[data-value="?"] { background-image: url(anim/9.png); }
+body[data-frame="10"] .question > div[data-value="?"] { background-image: url(anim/10.png); }
+body[data-frame="11"] .question > div[data-value="?"] { background-image: url(anim/11.png); }
+body[data-frame="12"] .question > div[data-value="?"] { background-image: url(anim/12.png); }
+body[data-frame="13"] .question > div[data-value="?"] { background-image: url(anim/13.png); }
+body[data-frame="14"] .question > div[data-value="?"] { background-image: url(anim/14.png); }
+body[data-frame="15"] .question > div[data-value="?"] { background-image: url(anim/15.png); }
+
+.question > div.top { background-image: url(img/border_top.png); }
+.question > div.bottom { background-image: url(img/border_bottom.png); }
+.question > div.right { background-image: url(img/border_right.png); }
+.question > div.left { background-image: url(img/border_left.png); }
+.question > div.top.left { background-image: url(img/border_tl.png); }
+.question > div.bottom.left { background-image: url(img/border_bl.png); }
+.question > div.top.right { background-image: url(img/border_tr.png); }
+.question > div.bottom.right { background-image: url(img/border_br.png); }
+
+.question > div[data-click] { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: rgb(255, 191, 21);
+    text-shadow: 1px 0 black, 0 1px black, 0 -1px black, -1px 0 black;
+    font-family: sans-serif;
+    font-size: calc(0.4 * var(--tile-size));
+}
+
+.question > div[data-click="empty"] { 
+    background-image: url(img/blue.png);
+    cursor: pointer;
+}
+
+.question > div[data-click="empty"]:hover { 
+    background-image: url(img/red.png);
+}
+
+.question > div[data-click="clicked"] { 
+    background-image: url(img/yellow.png);
+}
+
+.question > div[data-click="wrong"] { 
+    background-image: url(img/red.png);
+    color: rgb(254, 72, 23);
+    cursor: pointer;
+}
+
+.question > div[data-click="wrong"]:hover { 
+    background-image: url(img/blue.png);
+    color: rgb(111, 112, 255);
+}
+
+[data-puzzle-index] div {
+    transition: opacity ease-in-out 1s;
+}
+
+[data-puzzle-index].hidden [data-click], [data-puzzle-index].hidden [data-value] {
+    visibility: hidden;
+    opacity: 0%;
+}
+
+</style>
+<body data-frame="0">
+
+</body>
+<script src="puzzles.js"></script>
+<script src="index.js"></script>
